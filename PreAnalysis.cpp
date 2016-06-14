@@ -15,8 +15,20 @@ using namespace std;
 
 #include "MakeFileList.cpp"
 
+typedef struct{
+	string Datetime;
+	string Time;
+	string Text;
+	string Description;
+	string Genre;
+	string ProgramTitle;
+	string Station;
+	string Subgenre;
+	string Version;
+}FILE_LINE;
+
 int main() {
-	//const char* path = "/home/3928941380/Downloads/TV/"; 
+	const char* path = "/home/3928941380/Downloads/TV/"; 
 		/* 「const char *」というデータ型は、書き換えできない(読み取り専用の)文字列に対して使います */
 
 	/* ファイルリストの作成 */
@@ -52,6 +64,9 @@ int main() {
    		}
 	}//close for reading each file
   
+	/*
+	http://www.c-lang.net/general43/index.htmlの方法に従って、まずはファイルの長さにあった構造体を作り、正規表現で該当するプログラム名のものだけをその構造体に入れて、最後にサイズを調整するようにする。
+	*/
 
 	return 0;
 }
