@@ -31,16 +31,14 @@ vector<char*> getFileList(const char* path, int *found_file_num) {
 	return temp_path;
 }
 
-int filteredFileList(vector<char*> temp_path, int *found_file_num, FILE_LIST *File_List){
+int filteredFileList(vector<char*> temp_path, int *found_file_num, FILE_LIST *File_List, int *put_file_num){
 	if (0 < *found_file_num){
 		Temp_Path::iterator iter;
-		int put_file_num = 0;
 		regex re("(.*)(CCText)(.*)"); // re  HERE, TYPE OF FILE USED IS DEFINED
 		for (iter = temp_path.begin(); iter != temp_path.end(); ++iter) {
 				if(regex_match(*iter, re)){	
-      		  cout << *iter << endl; 
-						File_List[put_file_num].filepath = *iter;
-						++put_file_num;
+						File_List[*put_file_num].filepath = *iter;
+						++*put_file_num;
 				}
      }
 	}
