@@ -39,22 +39,6 @@ vector<char*> getFileList(const char* path, int *found_file_num) {
   } while (entry != NULL);
 	
 
-	if (0 < found_file_num){
-		FILE_LIST *File_List = new FILE_LIST[found_file_num]; // http://goo.gl/n1tTj4FILENUM_MAX
-
-		Temp_Path::iterator iter;
-		int put_file_num = 0;
-		regex re("(.*)(CCText)(.*)"); // re
-		for (iter = temp_path.begin(); iter != temp_path.end(); ++iter) {
-				if(regex_match(*iter, re)){	
-      		  cout << *iter << endl; 
-						File_List[put_file_num].filepath = *iter;
-						++put_file_num;
-				}
-     }
-	}
-
-
 	return temp_path;
 }
 
@@ -85,3 +69,5 @@ int main() {
   
 	return 0;
 }
+
+make change in original
