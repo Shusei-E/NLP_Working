@@ -34,7 +34,7 @@ vector<char*> getFileList(const char* path, int *found_file_num) {
 int filteredFileList(vector<char*> temp_path, int *found_file_num, FILE_LIST *File_List, int *put_file_num){
 	if (0 < *found_file_num){
 		Temp_Path::iterator iter;
-		regex re("(.*)(CCText)(.*)"); // re  HERE, TYPE OF FILE USED IS DEFINED
+		regex re("(.*)(CCALL)(.*)"); // re  HERE, TYPE OF FILE USED IS DEFINED
 		for (iter = temp_path.begin(); iter != temp_path.end(); ++iter) {
 				if(regex_match(*iter, re)){	
 						File_List[*put_file_num].filepath = *iter;

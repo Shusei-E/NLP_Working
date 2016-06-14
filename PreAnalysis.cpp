@@ -9,13 +9,14 @@
 #include <mecab.h>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
 #include "MakeFileList.cpp"
 
 int main() {
-	const char* path = "/home/3928941380/Downloads/TV/"; 
+	//const char* path = "/home/3928941380/Downloads/TV/"; 
 		/* 「const char *」というデータ型は、書き換えできない(読み取り専用の)文字列に対して使います */
 
 	/* ファイルリストの作成 */
@@ -37,17 +38,19 @@ int main() {
 
 			/* Read File */
 			ifstream ifs(full_path);
-   		string str;
+   		string str, temp;
    		if (ifs.fail())
    		{
    		    std::cerr << "Reading file failed" << std::endl;
    		    return -1;
    		}
-   		while (getline(ifs, str))
-   		{
-   		    std::cout << "[" << str << "]" << std::endl;
+   		while (getline(ifs, str)){ // read file line by line
+				istringstream stream(str);
+				while(getline(stream,temp,'\t')){ // analyze each line
+					std::cout<< temp << std::endl;
+				}
    		}
-	}
+	}//close for reading each file
   
 
 	return 0;
