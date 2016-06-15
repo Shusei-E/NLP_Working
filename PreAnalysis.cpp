@@ -22,7 +22,6 @@ typedef struct{
 
 
 int main() {
-		const char* path = "/Users/Shusei/Dropbox/Study/My_Research/MediaBias/PreAnalysis/TestData/"; 
 		/* 「const char *」というデータ型は、書き換えできない(読み取り専用の)文字列に対して */
 
 	/* ファイルリストの作成 */
