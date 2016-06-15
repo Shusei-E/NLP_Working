@@ -38,13 +38,5 @@ int main() {
 	extractData(path, &put_file_num, File_List, Data_Use_Full);	
   cout << Data_Use_Full[0].use_line_index[2] << endl; 
 
-	/* MeCab */
-
-
-	/*
-	http://www.c-lang.net/general43/index.htmlの方法に従って、まずはファイルの長さにあった構造体を作り、正規表現で該当するプログラム名のものだけをその構造体に入れて、最後にサイズを調整するようにする。
-	どの列かだけを記録しておいて、後でそれを写す
-	*/
-
 	return 0;
 }
