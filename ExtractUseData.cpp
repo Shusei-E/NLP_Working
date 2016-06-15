@@ -1,13 +1,13 @@
 typedef struct{
-	string Datetime; //row 0
-	string Time; //row 1
-	string Text; //row 2
-	string Description; //row 3
-	string Genre; //row 4
-	string ProgramTitle; //row 5
-	string Station; //row 6
-	string Subgenre; //row 7
-	string Version; //row 8
+	string Datetime; //col 0
+	string Time; //col 1
+	string Text; //col 2
+	string Description; //col 3
+	string Genre; //col 4
+	string ProgramTitle; //col 5
+	string Station; //col 6
+	string Subgenre; //col 7
+	string Version; //col 8
 } DATA_USE;
 
 #include "MeCab.cpp"
@@ -35,7 +35,7 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 			/* Read File */
 			DATA_USE *Data = new DATA_USE[total_line_num];
 		
-			int used_num=0;
+			int used_row_num=0;
 
 			ifstream ifs(full_path);
 			string str, temp;
@@ -75,21 +75,21 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 
 				/* After reading each line */
 				if(flag==1){ // program_title matches with the pattern
-						Data[used_num].Datetime = Data_temp[0].Datetime;
-						Data[used_num].Time = Data_temp[0].Time;
-						Data[used_num].Text = Data_temp[0].Text;
-						Data[used_num].Description = Data_temp[0].Description;
-						Data[used_num].ProgramTitle = Data_temp[0].ProgramTitle;
-						Data[used_num].Station = Data_temp[0].Station;
-						Data[used_num].Subgenre = Data_temp[0].Subgenre;
-						Data[used_num].Version = Data_temp[0].Version;
-						flag = 0; ++used_num;
+						Data[used_row_num].Datetime = Data_temp[0].Datetime;
+						Data[used_row_num].Time = Data_temp[0].Time;
+						Data[used_row_num].Text = Data_temp[0].Text;
+						Data[used_row_num].Description = Data_temp[0].Description;
+						Data[used_row_num].ProgramTitle = Data_temp[0].ProgramTitle;
+						Data[used_row_num].Station = Data_temp[0].Station;
+						Data[used_row_num].Subgenre = Data_temp[0].Subgenre;
+						Data[used_row_num].Version = Data_temp[0].Version;
+						flag = 0; ++used_row_num;
 				}
 
 				++row_index;
 			}//close while (read all rows in the data)
 
-			DoMeCab(Data, used_num);
+			DoMeCab(Data, used_row_num, path, file_name);
 
 
 	}//close for reading each file
