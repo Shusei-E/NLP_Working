@@ -22,8 +22,7 @@ typedef struct{
 
 
 int main() {
-	
-
+		const char* path = "/Users/Shusei/Dropbox/Study/My_Research/MediaBias/PreAnalysis/TestData/"; 
 		/* 「const char *」というデータ型は、書き換えできない(読み取り専用の)文字列に対して */
 
 	/* ファイルリストの作成 */
@@ -40,6 +39,7 @@ int main() {
   cout << Data_Use_Full[0].use_line_index[2] << endl; 
 	
 
+	// 試験的な書き加え
 	/*
 	http://www.c-lang.net/general43/index.htmlの方法に従って、まずはファイルの長さにあった構造体を作り、正規表現で該当するプログラム名のものだけをその構造体に入れて、最後にサイズを調整するようにする。
 	どの列かだけを記録しておいて、後でそれを写す
