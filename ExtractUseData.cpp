@@ -10,6 +10,7 @@ typedef struct{
 	string Version; //row 8
 } DATA_USE;
 
+#include "MeCab.cpp"
 
 void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL *Data_Use_Full){
 
@@ -87,6 +88,8 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 
 				++row_index;
 			}//close while (read all rows in the data)
+
+			DoMeCab(Data, used_num);
 
 
 	}//close for reading each file

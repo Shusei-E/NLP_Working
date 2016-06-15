@@ -4,7 +4,6 @@ typedef struct{
 
 typedef std::vector<char*> Temp_Path;
 
-
 bool has_suffix(const string& s, const string& suffix){ //Fileリストを取得するのに必要
     return (s.size() >= suffix.size()) && equal(suffix.rbegin(), suffix.rend(), s.rbegin());    
 }
