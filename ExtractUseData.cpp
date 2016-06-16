@@ -14,7 +14,7 @@ typedef struct{
 
 void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL *Data_Use_Full){
 
-	regex program_match("(.*)(短歌)(.*)"); //Program Title to look for
+	regex program_match("(.*)(ニュース)(.*)"); //Keyword for Program Title !!!!!
 	DATA_USE *Data_temp = new DATA_USE[1];
 	string file_name;
 	string full_path;
@@ -23,14 +23,14 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 			/* Prepare Full Path */
 			file_name = File_List[file_num].filepath;
 			full_path = path + file_name;
-			cout << full_path << endl;
+			cout << "Reading: " << full_path << endl;
 
 			/* Count Line Number */
 			ifstream countfile(full_path);
 			string line;
 			int total_line_num = -1; // the first row is header
 			while (std::getline(countfile, line)) ++total_line_num;
-			cout << total_line_num << endl;
+			cout << "Total Line: " << total_line_num << endl;
 
 			/* Read File */
 			DATA_USE *Data = new DATA_USE[total_line_num];
@@ -66,7 +66,7 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 					}
 
 					if(col_index==5 & row_index!=0){
-						if(regex_match(temp, program_match)) flag=1;
+						if(regex_match(temp, program_match)) flag=1; /* Select Program!!! */
 						Data_Use_Full[file_num].use_line_index.push_back(row_index);
 					}//close if
 
@@ -88,6 +88,7 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 
 				++row_index;
 			}//close while (read all rows in the data)
+
 
 			DoMeCab(Data, used_row_num, path, file_name);
 

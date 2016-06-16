@@ -13,6 +13,18 @@
 
 using namespace std;
 
+vector<string> split( string s, string c ){
+  vector<string> ret;
+  for( int i=0, n; i <= s.length(); i=n+1 ){
+	n = s.find_first_of( c, i );
+	if( n == string::npos ) n = s.length();
+	string tmp = s.substr( i, n-i );
+	ret.push_back(tmp);
+  }
+  return ret;
+}
+
+
 typedef struct{
 	vector<int> use_line_index; // Keep row_index of files we are going to analyze
 } DATA_FULL;
@@ -22,7 +34,7 @@ typedef struct{
 
 
 int main() {
-	const char* path = "";
+	const char* path = "/home/3928941380/Downloads/TV/";
 		/* 「const char *」というデータ型は、書き換えできない(読み取り専用の)文字列に対して */
 
 	/* ファイルリストの作成 */
@@ -36,7 +48,6 @@ int main() {
 	/* 使用データの抽出 */
 	DATA_FULL *Data_Use_Full = new DATA_FULL[put_file_num];
 	extractData(path, &put_file_num, File_List, Data_Use_Full);	
-  cout << Data_Use_Full[0].use_line_index[2] << endl; 
 
 	return 0;
 }
