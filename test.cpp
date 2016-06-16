@@ -1,32 +1,32 @@
-#include <iostream>
-#include <mecab.h>
+// string::find
+#include <iostream>       // std::cout
+#include <string>         // std::string
 
-int main(int argc, char **argv) {
+int main ()
+{
+  std::string str ("長いタイトルの中に、ニュースが入っているとします");
+  std::string str2 ("ニュース");
 
-    char input[1024] = "１時間と1分昼寝すること";
+  // different member versions of find in the same order as above:
+  std::size_t found = str.find(str2);
+  if (found!=std::string::npos)
+    std::cout << "first 'needle' found at: " << found << '\n';
 
-    MeCab::Tagger *tagger = MeCab::createTagger("");
-    const MeCab::Node* node = tagger->parseToNode(input);
+  //found=str.find("needles are small",found+1,6);
+  //if (found!=std::string::npos)
+  //  std::cout << "second 'needle' found at: " << found << '\n';
 
-    for (; node; node = node->next) {
-        std::cout << "==========" << std::endl;
-        std::cout << "id        : " << node->id        << std::endl;
-        std::cout << "surface   : " << node->surface   << std::endl;
-        std::cout << "feature   : " << node->feature   << std::endl;
-        std::cout << "length    : " << node->length    << std::endl;
-        std::cout << "rlength   : " << node->rlength   << std::endl;
-        std::cout << "rcAttr    : " << node->rcAttr    << std::endl;
-        std::cout << "lcAttr    : " << node->lcAttr    << std::endl;
-        std::cout << "posid     : " << node->posid     << std::endl;
-        std::cout << "char_type : " << (int)node->char_type << std::endl;
-        std::cout << "stat      : " << (int)node->stat      << std::endl;
-        std::cout << "isbest    : " << (int)node->isbest    << std::endl;
-        std::cout << "alpha     : " << node->alpha     << std::endl;
-        std::cout << "beta      : " << node->beta      << std::endl;
-        std::cout << "prob      : " << node->prob      << std::endl;
-        std::cout << "wcost     : " << node->wcost     << std::endl;
-        std::cout << "cost      : " << node->cost      << std::endl;
-    }
+  //found=str.find("haystack");
+  //if (found!=std::string::npos)
+  //  std::cout << "'haystack' also found at: " << found << '\n';
 
-    delete tagger;
+  //found=str.find('.');
+  //if (found!=std::string::npos)
+  //  std::cout << "Period found at: " << found << '\n';
+
+  //// let's replace the first needle:
+  //str.replace(str.find(str2),str2.length(),"preposition");
+  //std::cout << str << '\n';
+
+  return 0;
 }

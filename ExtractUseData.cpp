@@ -14,7 +14,9 @@ typedef struct{
 
 void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL *Data_Use_Full){
 
-	regex program_match("(.*)(ニュース)(.*)"); //Keyword for Program Title !!!!!
+	// regex program_match("(.*)(ニュース)(.*)"); //Keyword for Program Title --> SLOW
+	string keyword ("ニュース");
+
 	DATA_USE *Data_temp = new DATA_USE[1];
 	string file_name;
 	string full_path;
@@ -66,7 +68,8 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 					}
 
 					if(col_index==5 & row_index!=0){
-						if(regex_match(temp, program_match)) flag=1; /* Select Program!!! */
+						std::size_t found = temp.find(keyword);
+						if (found!=std::string::npos) flag=1; /* Select Program!!! */
 						Data_Use_Full[file_num].use_line_index.push_back(row_index);
 					}//close if
 

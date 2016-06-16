@@ -51,7 +51,7 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 				/* When it is a noun */
 				string noun = resvec[6];
 				find_it = freq.find(noun);
-				if(resvec[1]=="数"|resvec[1]=="非自立") continue;
+				if(resvec[1]=="数"|resvec[1]=="非自立"|resvec[1]=="代名詞"|resvec[1]=="接尾") continue;
 
 				if (find_it != freq.end()){
 					find_it->second += 1;
