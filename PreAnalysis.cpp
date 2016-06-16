@@ -34,7 +34,7 @@ typedef struct{
 
 
 int main() {
-	const char* path = "/home/3928941380/Downloads/TV/";
+	const char* path = "/home/3928941380/Downloads/TV/NHK_toAnalyze/";
 		/* 「const char *」というデータ型は、書き換えできない(読み取り専用の)文字列に対して */
 
 	/* ファイルリストの作成 */
