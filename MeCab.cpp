@@ -27,14 +27,16 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 
 	map<string, int> freq; // store_frequency
 	map<string, int>::iterator find_it;
+	map<string, int>::iterator output_it;
 	
 	file_name.erase(file_name.end()-9, file_name.end());
 	string save_path = path + file_name + "Freq.txt";
 	cout << save_path << endl;	
 
 
-	for(int row_num=0; row_num< 2; ++row_num){
-    MeCab::Tagger *tagger = MeCab::createTagger("");
+	MeCab::Tagger *tagger = MeCab::createTagger("");
+	for(int row_num=0; row_num< used_row_num; ++row_num){
+    
     const MeCab::Node* node = tagger->parseToNode(Data[row_num].Text.c_str());
 
 
@@ -50,10 +52,12 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 					freq.insert(pair<string, int>(noun, 1));
 				}
 
-			}//close if we find re_feature
+			}//close if for finding re_feature
 				
 
    	}//close for node
+
+	}//close for Data analyzing (analyze all rows)
 
 		/* Make an output */
 		vector<map_freq_it> sorted;
@@ -74,8 +78,5 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 			++output_number;
  		}
 
-    delete tagger;
-	
-	}//close for Data analyzing
-
+		delete tagger;
 }//close function
