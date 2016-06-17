@@ -12,7 +12,7 @@ typedef struct{
 
 #include "MeCab.cpp"
 
-void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL *Data_Use_Full){
+void extractData(string path, int *put_file_num, FILE_LIST *File_List){
 
 	// regex program_match("(.*)(ニュース)(.*)"); //Keyword for Program Title --> SLOW
 	string keyword ("ニュース");
@@ -70,7 +70,6 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 					if(col_index==5 & row_index!=0){
 						std::size_t found = temp.find(keyword);
 						if (found!=std::string::npos) flag=1; /* Select Program!!! */
-						Data_Use_Full[file_num].use_line_index.push_back(row_index);
 					}//close if
 
 					++col_index;
@@ -98,6 +97,5 @@ void extractData(string path, int *put_file_num, FILE_LIST *File_List, DATA_FULL
 
 	}//close for reading each file
 
-		//return Data;
 
 }//end function

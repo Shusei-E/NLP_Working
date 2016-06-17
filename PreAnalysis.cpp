@@ -25,9 +25,6 @@ vector<string> split( string s, string c ){
 }
 
 
-typedef struct{
-	vector<int> use_line_index; // Keep row_index of files we are going to analyze
-} DATA_FULL;
 
 #include "MakeFileList.cpp"
 #include "ExtractUseData.cpp"
@@ -46,8 +43,7 @@ int main() {
 	filteredFileList(temp_path, &found_file_num, File_List, &put_file_num); // read specific source of file
 
 	/* 使用データの抽出 */
-	DATA_FULL *Data_Use_Full = new DATA_FULL[put_file_num];
-	extractData(path, &put_file_num, File_List, Data_Use_Full);	
+	extractData(path, &put_file_num, File_List);	
 
 	return 0;
 }
