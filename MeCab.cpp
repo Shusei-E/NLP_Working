@@ -30,7 +30,7 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 	
 	file_name.erase(file_name.end()-9, file_name.end());
 	string save_path = path + file_name + "Freq.txt";
-	string save_summary_path = path + "Summary.csv";
+	string save_summary_path = path + "Summary.txt";
 	cout << "Save as: " << save_path << endl;	
 
 
@@ -74,7 +74,7 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 
 		sort(sorted.begin(), sorted.end(), compare);
 
-		int output_number = 0; int max_output = 30; // How many top words you want to get
+		int output_number = 0; int max_output = 500; // How many top words you want to get
 
 		//// Save Each file
 		//std::ofstream ofs(save_path, std::ios::out | std::ios::app );
