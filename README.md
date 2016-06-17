@@ -7,4 +7,4 @@ Codes I'm working on
 	* But the fastest one is splitting in to a vector, which is used in `MeCab.cpp`.
 	* For simple use, `std::string::find` is enough.
 * Visualizing the results
-	* Count data --> pandas --> line graph for top words?
+	* ~~Count data --> pandas --> line graph for top words?~~ Done in `MeCab.cpp`
