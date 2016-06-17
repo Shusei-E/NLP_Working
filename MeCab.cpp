@@ -30,6 +30,7 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 	
 	file_name.erase(file_name.end()-9, file_name.end());
 	string save_path = path + file_name + "Freq.txt";
+	string save_summary_path = path + "Summary.csv";
 	cout << "Save as: " << save_path << endl;	
 
 
@@ -73,15 +74,29 @@ void DoMeCab(DATA_USE *Data, int used_row_num, string path, string file_name){
 
 		sort(sorted.begin(), sorted.end(), compare);
 
-		int output_number = 0;
-		std::ofstream ofs(save_path, std::ios::out | std::ios::app );
- 	 	for(vec_stu_citer_t output_it = sorted.begin(); output_it != sorted.end(); ++output_it){
-			ofs << (*output_it)->first << "," <<  (*output_it)->second << endl;
+		int output_number = 0; int max_output = 30; // How many top words you want to get
+
+		//// Save Each file
+		//std::ofstream ofs(save_path, std::ios::out | std::ios::app );
+ 	 	//for(vec_stu_citer_t output_it = sorted.begin(); output_it != sorted.end(); ++output_it){
+		//	ofs << (*output_it)->first << "," <<  (*output_it)->second << endl;
+ 	 	//	
+		//	if(output_number > max_output) break;
+		//	++output_number;
+ 		//}
+
+		// Save Summary File
+		vector<string> datetime_vec = split(Data[0].Datetime, " " );
+		char station[1024];
+		 strncpy(station, Data[0].Station.c_str(), sizeof(station));
+		 station[sizeof(station) - 1] = 0;
+		output_number = 0;	
+
+		std::ofstream ofs2(save_summary_path, std::ios::out | std::ios::app );
+		for(vec_stu_citer_t output_it = sorted.begin(); output_it != sorted.end(); ++output_it){
+			ofs2 << datetime_vec[0] << "," << (*output_it)->first << "," <<  (*output_it)->second << "," << station << endl;
  	 		
-			//cout << (*output_it)->first << ",";
-  		//cout << (*output_it)->second <<endl;
-  	  
-			if(output_number > 20) break;
+			if(output_number > max_output) break;
 			++output_number;
  		}
 
